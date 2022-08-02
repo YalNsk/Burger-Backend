@@ -1,14 +1,15 @@
 const burgerRouter = require('express').Router();
+const burgerController = require('../controllers/burger-controller')
 
 burgerRouter.route('/')
-    .get((req, res) => { res.sendStatus(501);}) //Voir tous les burgers
-    .post((req, res) => { res.sendStatus(501);}) //Ajout d'un nouveau burger
+    .get(burgerController.getAll) //Voir tous les burgers
+    .post(burgerController.create) //Ajout d'un nouveau burger
 
 
 burgerRouter.route('/:id')
-    .get((req,res) => { res.sendStatus(501); }) //Info d'un burger
-    .put((req, res) => { res.sendStatus(501) ;}) //Modification d'un burger
-    .delete((req, res) => { res.sendStatus(501)}); //Suppresion d'un burger
+    .get(burgerController.getById ) //Info d'un burger
+    .put(burgerController.update) //Modification d'un burger
+    .delete(burgerController.delete); //Suppresion d'un burger
     
 
 module.exports = burgerRouter;

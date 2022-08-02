@@ -1,14 +1,14 @@
 const userRouter = require('express').Router();
+const userController = require('../controllers/user-controller');
 
 userRouter.route('/')
-    .get((req, res) => { res.sendStatus(501);}) //Voir tous les users
-    .post((req, res) => { res.sendStatus(501);}) //Ajout d'un nouveau user
-
+    .get(userController.getAll) //Voir tous les users
+    .post(userController.create) //Création d'un user
 
 userRouter.route('/:id')
-    .get((req,res) => { res.sendStatus(501); }) //Info d'un user
-    .put((req, res) => { res.sendStatus(501) ;}) //Modification d'un user
-    .delete((req, res) => { res.sendStatus(501)}); //Suppresion d'un user
+    .get(userController.getByID) //Info d'un user
+    .put(userController.update) //Modification d'un user
+    .delete(userController.delete); //Suppresion d'un user
     
 
 module.exports = userRouter;

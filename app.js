@@ -4,7 +4,7 @@ require('dotenv-flow').config(); //Pour pouvoir aller chercher les variables d'e
 //création du serveur 
 const express = require('express');
 const app = express(); 
-const { MESSAGE, NODE_ENV, PORT, DB_CONNECTION} = process.env; //On extrait les variables dont on va avooir besoin
+const { MESSAGE, NODE_ENV, PORT, DB_CONNECTION} = process.env; //On extrait les variables dont on va avoir besoin
 
 console.log(DB_CONNECTION);
 console.log('Lancé en', NODE_ENV, ' : ', MESSAGE);
@@ -21,7 +21,7 @@ const mongoose = require('mongoose');
 
 app.use(async(req, res, next) => {
     await mongoose.connect(DB_CONNECTION);
-    console.log("Connexion réussie !");
+    console.log("Connexion réussie...");
     next();
 });
 

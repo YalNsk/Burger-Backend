@@ -1,14 +1,15 @@
 const orderRouter = require('express').Router();
+const orderController = require('../controllers/order-controller')
 
 orderRouter.route('/')
-    .get((req, res) => { res.sendStatus(501);}) //Voir tous les orders
-    .post((req, res) => { res.sendStatus(501);}) //Ajout d'un nouveau order
+    .get(orderController.getAll) //Voir tous les orders --> réservé à l'admin
+    .post(orderController.create) //Ajout d'un nouveau order
 
 
 orderRouter.route('/:id')
-    .get((req,res) => { res.sendStatus(501); }) //Info d'un order
-    .put((req, res) => { res.sendStatus(501) ;}) //Modification d'un order
-    .delete((req, res) => { res.sendStatus(501)}); //Suppresion d'un order
+    .get(orderController.getById) //Info d'un order 
+    .put(orderController.update) //Modification d'un order --> réservé à l'admin
+    .delete(orderController.delete); //Suppresion d'un order --> réservé à l'admin 
     
 
 module.exports = orderRouter;

@@ -10,7 +10,8 @@ const orderSchema = new Schema({
                 ref : Burger
             },
             ingredientsSupp : {
-                type : [String]
+                type : [String],
+                required : false
             }
         }
     ],
@@ -23,7 +24,8 @@ const orderSchema = new Schema({
         type : String,
         required : true,
         unique : true,
-        enum : ['Le plus vite possible', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30,', '21:00', '21:30', '22:00']
+        enum : ['Le plus vite possible', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30,', '21:00', '21:30', '22:00'],
+        default : 'Le plus vite possible'
     },
     status : {
         type : String,
