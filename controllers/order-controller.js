@@ -11,7 +11,17 @@ const orderController = {
     //infos d'une commande
     getById: async (req, res) => {
         const id = req.params.id;
-        const order = await Order.findById(id);
+        const order = await Order.findById(id)
+        
+        .populate({           
+            path : 'burgers.burgerId',
+            select : {name : 1, price : 1 }
+        })
+        .populate({
+            path : 'userId',
+            select : {firstname : 1, lastname :1, adress : 1}
+        })
+        ;
 
         if (order) {
             res.status(200).json(order);
@@ -25,12 +35,13 @@ const orderController = {
 
 
     create: async (req, res) => {
-        console.log("Nouvelle commande !");
-
+        
         const orderToAdd = Order(req.body);
         console.log(orderToAdd);
         await orderToAdd.save();
         res.status(200).json(orderToAdd);
+        
+        console.log("Nouvelle commande !");
     },
 
 
@@ -38,7 +49,6 @@ const orderController = {
 
     //modification d'une commande --> réservé à l'admin
     update: async (req, res) => {
-        console.log("Commande modifiée");
 
         const id = req.params.id;
         const { burgers, deliveryTime, status} = req.body;
@@ -52,6 +62,8 @@ const orderController = {
         else {
             return res.sendStatus(204);
         }
+
+        console.log("Commande modifiée");
     },
 
 

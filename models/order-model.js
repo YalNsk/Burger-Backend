@@ -23,7 +23,6 @@ const orderSchema = new Schema({
     deliveryTime : {
         type : String,
         required : true,
-        unique : true,
         enum : ['Le plus vite possible', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30,', '21:00', '21:30', '22:00'],
         default : 'Le plus vite possible'
     },
@@ -43,5 +42,3 @@ const orderSchema = new Schema({
 const Order = model('Commande', orderSchema);
 
 module.exports = Order; 
-
-// Ajout d'une commande ==> Tableau 
