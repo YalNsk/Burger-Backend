@@ -38,8 +38,7 @@ const userController = {
         const userUpdated = await User.findByIdAndUpdate(id, {
             email,
             firstname,
-            lastname, 
-            password,
+            lastname,
             adress
         }, { returnDocument: 'after' });
 

@@ -63,7 +63,6 @@ const orderController = {
             return res.sendStatus(204);
         }
 
-        console.log("Commande modifiée");
     },
 
 
