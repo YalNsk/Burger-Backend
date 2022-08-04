@@ -28,14 +28,14 @@ const orderSchema = new Schema({
     },
     status : {
         type : String,
-        enum : ['Pending', 'In preparation', 'On delivery', 'Delivered' ],
+        enum : ['Pending', 'Preparation', 'Delivery', 'Delivered' ],
         default : 'Pending',
         required : true,
     }
 
 },
 {
-    collection :'commandes',
+    collection :'Commandes',
     timestamps : true
 });
 

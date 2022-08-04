@@ -21,7 +21,6 @@ const userController = {
 
     create: async (req, res) => {
         console.log("Nouvel utilisateur enregistré !");
-
         const userToAdd = User(req.body);
         console.log(userToAdd);
         await userToAdd.save();

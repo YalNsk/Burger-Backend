@@ -4,7 +4,16 @@ const orderController = {
     // voir toutes les commandes
     //populate pour afficher les infos supplémentaires
     getAll: async (req, res) => {
-        const order = await Order.find();
+        const order = await Order.find()
+        .populate({           
+            path : 'burgers.burgerId',
+            select : {name : 1, price : 1 }
+        })
+        .populate({
+            path : 'userId',
+            select : {firstname : 1, lastname :1, adress : 1}
+        })
+        ;
         res.status(200).json(order);
     },
 
